@@ -1,0 +1,45 @@
+# IDE and editor files
+.vscode/
+.vs/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build outputs
+**/bin/
+**/obj/
+**/out/
+**/dist/
+**/build/
+
+# .NET
+*.cache
+*.log
+*.tmp
+*.temp
+TestResults/
+
+# Node / frontend
+node_modules/
+coverage/
+.npm/
+.pnpm-store/
+
+# Environment and secrets
+.env
+.env.*
+*.local
+appsettings.json
+appsettings.*.json
+
+# Databases/temporary data
+*.db
+*.sqlite
+*.sqlite3
+*.session.sql
+
+# OS files
+.DS_Store
+Thumbs.db
