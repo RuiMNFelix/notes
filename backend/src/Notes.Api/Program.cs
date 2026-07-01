@@ -56,6 +56,7 @@ app.UseAuthorization();
 
 app.MapRegister();
 app.MapLogin();
+app.MapCreateNote();
 app.MapProtectedEndpoints();
 
 app.Run();
