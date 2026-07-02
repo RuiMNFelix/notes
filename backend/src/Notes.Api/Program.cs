@@ -11,6 +11,7 @@ using FluentValidation;
 using Notes.Api.Features.Notes.GetNotes;
 using Notes.Api.Features.Notes.CreateNote;
 using Notes.Api.Features.Notes.UpdateNote;
+using Notes.Api.Features.Notes.DeleteNote;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -62,6 +63,7 @@ app.MapLogin();
 app.MapCreateNote();
 app.MapGetNotes();
 app.MapUpdateNote();
+app.MapDeleteNote();
 app.MapProtectedEndpoints();
 
 app.Run();
