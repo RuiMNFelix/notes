@@ -14,11 +14,8 @@ public static class UpdateNoteHandler
         ClaimsPrincipal user,
         IValidator<UpdateNoteRequest> validator)
     {
-        var validationResult = await validator.ValidateAsync(request);
-        if (!validationResult.IsValid)
-        {
-            return Results.ValidationProblem(validationResult.ToDictionary());
-        }
+        var validationResult = await validator.ValidateRequest(request);
+        if (validationResult is not null) { return validationResult; }
 
         var ownerId = user.GetUserId();
 

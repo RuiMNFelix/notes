@@ -1,8 +1,8 @@
 using Notes.Api.Data;
-using FluentValidation;
 using System.Security.Claims;
 using Notes.Api.Common.Extensions;
 using Microsoft.EntityFrameworkCore;
+using FluentValidation;
 
 namespace Notes.Api.Features.Notes.CreateNote;
 public static class CreateNoteHandler
@@ -13,11 +13,8 @@ public static class CreateNoteHandler
         ClaimsPrincipal user,
         IValidator<CreateNoteRequest> validator)
     {
-        var validationResult = await validator.ValidateAsync(request);
-        if (!validationResult.IsValid)
-        {
-            return Results.ValidationProblem(validationResult.ToDictionary());
-        }
+        var validationResult = await validator.ValidateRequest(request);
+        if(validationResult is not null) { return validationResult; }
 
         var ownerId = user.GetUserId();
 
