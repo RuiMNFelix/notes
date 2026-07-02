@@ -1,5 +1,4 @@
-using Notes.Api.Features.Notes.CreateNote;
-
+namespace Notes.Api.Features.Notes.CreateNote;
 public static class CreateNoteEndpoint
 {
     public static void MapCreateNote(this IEndpointRouteBuilder app)

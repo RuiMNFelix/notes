@@ -8,6 +8,8 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Notes.Api.Features.Auth.Login;
 using FluentValidation;
+using Notes.Api.Features.Notes.GetNotes;
+using Notes.Api.Features.Notes.CreateNote;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -57,6 +59,7 @@ app.UseAuthorization();
 app.MapRegister();
 app.MapLogin();
 app.MapCreateNote();
+app.MapGetNotes();
 app.MapProtectedEndpoints();
 
 app.Run();
