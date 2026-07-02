@@ -10,6 +10,7 @@ using Notes.Api.Features.Auth.Login;
 using FluentValidation;
 using Notes.Api.Features.Notes.GetNotes;
 using Notes.Api.Features.Notes.CreateNote;
+using Notes.Api.Features.Notes.UpdateNote;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -60,6 +61,7 @@ app.MapRegister();
 app.MapLogin();
 app.MapCreateNote();
 app.MapGetNotes();
+app.MapUpdateNote();
 app.MapProtectedEndpoints();
 
 app.Run();

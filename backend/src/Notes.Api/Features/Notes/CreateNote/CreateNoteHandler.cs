@@ -2,7 +2,6 @@ using Notes.Api.Data;
 using FluentValidation;
 using System.Security.Claims;
 using Notes.Api.Common.Extensions;
-
 using Microsoft.EntityFrameworkCore;
 
 namespace Notes.Api.Features.Notes.CreateNote;

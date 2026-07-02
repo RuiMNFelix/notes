@@ -25,6 +25,9 @@ public class AppDbContext : DbContext
             entity.Property(e => e.Title).IsRequired();
             entity.Property(e => e.Content).IsRequired();
 
+            entity.HasIndex(e => new { e.OwnerId, e.Title })
+                .IsUnique();
+
             entity.HasOne<User>()
                   .WithMany()
                   .HasForeignKey(e => e.OwnerId)
