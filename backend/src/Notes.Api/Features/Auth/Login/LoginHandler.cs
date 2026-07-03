@@ -4,6 +4,7 @@ using Notes.Api.Data;
 using Notes.Api.Entities;
 using Notes.Api.Common.Auth;
 using FluentValidation;
+using Notes.Api.Common.Extensions;
 
 namespace Notes.Api.Features.Auth.Login;
 
@@ -15,11 +16,8 @@ public static class LoginHandler
         ITokenService tokenService,
         IValidator<LoginRequest> validator)
     {
-        var validationResult = await validator.ValidateAsync(request);
-        if (!validationResult.IsValid)
-        {
-            return Results.ValidationProblem(validationResult.ToDictionary());
-        }
+        var validationResult = await validator.ValidateRequest(request);
+        if(validationResult is not null) { return validationResult; }
 
         var user = await context.Users
             .FirstOrDefaultAsync(u => u.Username == request.Username);

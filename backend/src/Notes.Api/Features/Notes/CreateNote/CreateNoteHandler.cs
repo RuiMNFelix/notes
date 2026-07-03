@@ -35,6 +35,6 @@ public static class CreateNoteHandler
         context.Notes.Add(newNote);
         await context.SaveChangesAsync();
 
-        return Results.Created($"/api/notes/{newNote.Id}", new { message = "Note created successfully!" });
+        return Results.Created($"/api/notes/{newNote.Id}", "Note created successfully!");
     }
 }

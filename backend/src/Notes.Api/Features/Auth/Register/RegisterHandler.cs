@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Notes.Api.Data;
 using Notes.Api.Entities;
 using FluentValidation;
+using Notes.Api.Common.Extensions;
 
 namespace Notes.Api.Features.Auth.Register;
 
@@ -13,11 +14,8 @@ public static class RegisterHandler
         AppDbContext context,
         IValidator<RegisterRequest> validator)
     {
-        var validationResult = await validator.ValidateAsync(request);
-        if (!validationResult.IsValid)
-        {
-            return Results.ValidationProblem(validationResult.ToDictionary());
-        }
+        var validationResult = await validator.ValidateRequest(request);
+        if(validationResult is not null) { return validationResult; }
 
         if (await context.Users.AnyAsync(u => u.Username == request.Username))
         {
@@ -30,6 +28,6 @@ public static class RegisterHandler
         context.Users.Add(user);
         await context.SaveChangesAsync();
 
-        return Results.Ok(new { message = "User registered successfully!" });
+        return Results.Ok("User registered successfully!");
     }
 }

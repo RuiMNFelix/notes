@@ -11,7 +11,7 @@ public static class GetNotesHandler
         AppDbContext context,
         ClaimsPrincipal user)
     {
-        var books = await context.Notes
+        var notes = await context.Notes
             .Where(n => n.OwnerId == user.GetUserId())
             .Select(n => new GetNoteResponse(
                 n.Id,
@@ -22,6 +22,6 @@ public static class GetNotesHandler
             ))
             .ToListAsync();
 
-        return Results.Ok(books);
+        return Results.Ok(notes);
     }
 }
