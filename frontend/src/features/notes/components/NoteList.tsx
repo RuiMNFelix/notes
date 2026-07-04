@@ -1,5 +1,5 @@
 import type { Note } from "@/features/notes/api";
-import { NoteCard } from "./Notecard";
+import { NoteCard } from "./NoteCard";
 
 interface NoteListProps {
   notes: Note[];
