@@ -3,7 +3,7 @@ public static class CreateNoteEndpoint
 {
     public static void MapCreateNote(this IEndpointRouteBuilder app)
     {
-        app.MapPost("api/notes/create", CreateNoteHandler.HandleAsync)
+        app.MapPost("api/notes", CreateNoteHandler.HandleAsync)
             .WithName("Create Note").WithTags("Notes").RequireAuthorization();
     }
 }

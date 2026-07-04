@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getErrorMessage, register } from "./api.js";
+import { NotebookPen } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -45,7 +46,12 @@ export default function Register() {
     <div className="flex min-h-screen items-center justify-center p-4">
       <Card className="w-full max-w-sm">
         <CardHeader>
-          <CardTitle>Notes App</CardTitle>
+          <CardTitle>
+            <div className="flex items-center gap-2">
+              <NotebookPen className="h-6 w-6" />
+              <h3 className="text-xl font-bold">Notes</h3>
+            </div>
+          </CardTitle>
           <CardDescription>
              Create an account to start taking notes.
           </CardDescription>

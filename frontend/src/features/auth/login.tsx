@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getErrorMessage, login } from "./api.js";
 import { Link } from "react-router-dom";
+import { NotebookPen} from "lucide-react";
 import {
   Card,
   CardContent,
@@ -42,11 +43,21 @@ export default function Login() {
     }
   };
 
+  <div className="flex items-center gap-2">
+          <NotebookPen className="h-6 w-6" />
+          <h1 className="text-xl font-bold">Notes</h1>
+        </div>
+
   return (
     <div className="flex min-h-screen items-center justify-center p-4">
       <Card className="w-full max-w-sm">
         <CardHeader>
-          <CardTitle>Notes App</CardTitle>
+          <CardTitle>
+            <div className="flex items-center gap-2">
+              <NotebookPen className="h-6 w-6" />
+              <h3 className="text-xl font-bold">Notes</h3>
+            </div>
+          </CardTitle>
           <CardDescription>
             Welcome back! Please sign in to continue.
           </CardDescription>
