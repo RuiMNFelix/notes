@@ -12,7 +12,7 @@ import {
 import { Button } from "@/components/ui/button.js";
 import { Input } from "@/components/ui/input.js";
 import { Label } from "@/components/ui/label.js";
-import { getErrorMessage } from "./api";
+import { getErrorMessage } from "@/shared/lib/get-error-message.js";
 
 type AuthFormProps = {
   description: string;

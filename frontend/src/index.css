@@ -11,6 +11,9 @@
   --card: #fffdf7;            /* card background, slightly lighter than page */
   --card-foreground: #3d3527;
 
+  --dialog: #fffdf7;          /* dialog background, slightly lighter than page */
+  --dialog-foreground: #3d3527;
+
   --popover: #fffdf7;
   --popover-foreground: #3d3527;
 
@@ -31,7 +34,7 @@
 
   --border: #e8dfc4;           /* soft warm border, not black */
   --input: #f0e6c9;            /* input background, distinct from card */
-  --ring: rgba(170, 59, 255, 0.35);
+  --ring: #c05c34;
 
   --code-bg: #f4ecd8;
 
