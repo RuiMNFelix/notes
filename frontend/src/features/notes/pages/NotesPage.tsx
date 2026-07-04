@@ -1,10 +1,10 @@
 import { useState, useMemo } from "react";
 import { Header } from "@/components/layout/Header";
-import { SearchBar } from "@/features/notes/components/SearchBar";
-import { useNotes } from "./hooks/useNotes";
-import { NoteList } from "./components/NoteList";
+import { SearchBar } from "../components/SearchBar";
+import { useNotes } from "../hooks/useNotes";
+import { NoteList } from "../components/NoteList";
 
-export default function Home() {
+export default function NotesPage() {
   const { data: notes = [], isLoading, isError } = useNotes();
   const [search, setSearch] = useState("");
 
@@ -46,9 +46,7 @@ export default function Home() {
           (filteredNotes.length > 0 ? (
             <NoteList notes={filteredNotes} />
           ) : (
-            <p className="text-muted-foreground">
-              No notes match your search.
-            </p>
+            <p className="text-muted-foreground">No notes match your search.</p>
           ))}
       </main>
     </>

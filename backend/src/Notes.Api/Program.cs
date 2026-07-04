@@ -12,6 +12,7 @@ using Notes.Api.Features.Notes.GetNotes;
 using Notes.Api.Features.Notes.CreateNote;
 using Notes.Api.Features.Notes.UpdateNote;
 using Notes.Api.Features.Notes.DeleteNote;
+using Notes.Api.Features.Notes;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -58,6 +59,7 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<NoteService>();
 
 var app = builder.Build();
 

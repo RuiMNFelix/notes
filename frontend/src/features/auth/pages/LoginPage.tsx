@@ -1,13 +1,14 @@
 import { useNavigate } from "react-router-dom";
-import { AuthForm } from "./auth-form";
-import { login } from "./api";
+import { AuthForm } from "../auth-form";
+import { login } from "../api";
+import { setToken } from "@/shared/lib/auth";
 
-export default function Login() {
+export default function LoginPage() {
   const navigate = useNavigate();
 
   const handleLogin = async (data: { username: string; password: string }) => {
     const token = await login(data);
-    localStorage.setItem("token", token);
+    setToken(token);
     navigate("/notes");
   };
 

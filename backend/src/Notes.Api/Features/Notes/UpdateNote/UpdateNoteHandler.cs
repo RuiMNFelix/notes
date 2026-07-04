@@ -2,7 +2,7 @@ using Notes.Api.Data;
 using System.Security.Claims;
 using FluentValidation;
 using Notes.Api.Common.Extensions;
-using Microsoft.EntityFrameworkCore;
+using Notes.Api.Features.Notes;
 
 namespace Notes.Api.Features.Notes.UpdateNote;
 public static class UpdateNoteHandler
@@ -12,19 +12,18 @@ public static class UpdateNoteHandler
         UpdateNoteRequest request, 
         AppDbContext context,
         ClaimsPrincipal user,
-        IValidator<UpdateNoteRequest> validator)
+        IValidator<UpdateNoteRequest> validator,
+        NoteService noteService)
     {
         var validationResult = await validator.ValidateRequest(request);
         if (validationResult is not null) { return validationResult; }
 
         var ownerId = user.GetUserId();
 
-        var note = await context.Notes.FirstOrDefaultAsync(n =>
-            n.Id == id &&
-            n.OwnerId == ownerId);
+        var note = await noteService.GetOwnedNoteAsync(id, ownerId);
         if (note == null) { return Results.NotFound("Note not found."); }
 
-        if (await context.Notes.AnyAsync(n => n.Title == request.Title && n.OwnerId == ownerId && n.Id != id))
+        if (await noteService.TitleExistsForOwnerAsync(ownerId, request.Title, id))
         {
             return Results.BadRequest("Already exists a Note with this Title.");
         }
